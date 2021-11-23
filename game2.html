@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Guess(Single)</title>
+    </head>
+    <style>
+        body {
+          background-image: url('img/R.jpeg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+          text-align: center;
+          color: white;
+          font-size: 150%;
+        }
+    </style>
+
+    <body>
+    Welcome <span id='TT'></span><br>
+    Please Input Your Number:<br>
+	<br>
+    <input type='number' name='num1' id='num1'>  
+    
+    <button onclick="guess()" id="submit">Submit</button> 
+    <a href="game2.html"><input  type="reset" value="reset"></a>
+    <p id="guessnumber"></p>
+
+    
+    </body>
+
+    <script>
+        document.getElementById("TT").innerHTML=localStorage.getItem("textvalue");
+        
+
+        
+        var count=0;
+	var guessno;
+	var guessno1;
+	var guessno2=100;
+	var guessno3=0;
+        var ans = parseInt(Math.random()*100);
+
+        function guess(){
+            var num1 = document.getElementById('num1').value;
+            if (num1 < 0 || num1 > 100){
+                alert("Please input number between 0~100");
+            }else if (ans == num1){
+                guessno='Congratulations, you got it!! The Number is ' + ans +' and You Guessed '+ count + ' Times.';
+            }else if (ans > num1){
+		guessno3 = num1;
+      		guessno ='The number between ('+ guessno3 +') ~ ('+ guessno2 +') ';
+            }else if (ans < num1 ){
+		guessno2 = num1;
+      		guessno ='The number between ('+ guessno3 +') ~ ('+ guessno2 +') ';
+            }
+		
+		
+		
+            count++;
+
+		document.getElementById('guessnumber').innerHTML=guessno;
+
+        }
+
+
+            </script>
+</html>
